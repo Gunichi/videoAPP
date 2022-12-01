@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { Text, SafeAreaView, View } from 'react-native';
+import { Text, SafeAreaView, View, TouchableOpacity } from 'react-native';
 import { TextInput, RadioButton, Button } from 'react-native-paper';
 
 
 import { styles } from './style';
 
-const Register = () => {
+const Register = ({navigation}) => {
 
   const [value, setValue] = useState('first');
 
@@ -17,19 +17,19 @@ const Register = () => {
             <TextInput 
               style={styles.registerInput} 
               placeholder="Nome" 
-              left={<TextInput.Icon icon="eye" />}
+              left={<TextInput.Icon icon="account" />}
               activeUnderlineColor="#19786A"
             />
             <TextInput 
               style={styles.registerInput} 
               placeholder="Email" 
-              left={<TextInput.Icon icon="eye" />}
+              left={<TextInput.Icon icon="email" />}
               activeUnderlineColor="#19786A"
             />
             <TextInput 
               style={styles.registerInput} 
               placeholder="Senha" 
-              left={<TextInput.Icon icon="eye" />}
+              left={<TextInput.Icon icon="shield-lock" />}
               activeUnderlineColor="#19786A"
             />
           </View>
@@ -45,9 +45,12 @@ const Register = () => {
             </View>
           </RadioButton.Group>
         </View>
-        <Button style={styles.registerButton} mode="contained" onPress={() => console.log('Pressed')}>
+        <TouchableOpacity style={styles.registerButton} mode="contained" 
+        onPress={() =>
+          navigation.navigate('Login')
+         }>
           Registrar
-        </Button>
+        </TouchableOpacity>
         <Text style={styles.registerDescription}> Ao se registrar você está de acordo com os termos de privacidade. </Text>
       </SafeAreaView>
     );
